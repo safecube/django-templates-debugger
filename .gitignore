@@ -1,2 +1,6 @@
 .idea
 *.egg-info/
+
+
+__pycache__/
+templates_debugger/__pycache__/

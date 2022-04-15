@@ -16,7 +16,7 @@ def _is_enabled(context):
 
 
 @register.simple_tag(takes_context=True)
-def faked_var(context, var_name: str, generator: str):
+def debug_var_faker(context, var_name: str, generator: str):
     if not _is_enabled(context):
         return ''
 
@@ -26,7 +26,16 @@ def faked_var(context, var_name: str, generator: str):
 
 
 @register.simple_tag(takes_context=True)
-def faked_obj(context, var_name: str, json_obj: str):
+def debug_var_value(context, var_name: str, value: any):
+    if not _is_enabled(context):
+        return ''
+
+    context.dicts[0][var_name] = value
+    return ''
+
+
+@register.simple_tag(takes_context=True)
+def debug_var_json_obj(context, var_name: str, json_obj: str):
     if not _is_enabled(context):
         return ''
 
@@ -36,7 +45,7 @@ def faked_obj(context, var_name: str, json_obj: str):
 
 
 @register.simple_tag(takes_context=True)
-def faked_queryset(context, var_name: str, queryset: str):
+def debug_var_queryset(context, var_name: str, queryset: str):
     if not _is_enabled(context):
         return ''
 
