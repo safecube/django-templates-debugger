@@ -1,0 +1,13 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n admin_urls %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    <ul>
+        {% for dir in dirs %}
+            <li><a href="{% url 'templates_debugger:dirs' path=dir%}">{{ dir }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
